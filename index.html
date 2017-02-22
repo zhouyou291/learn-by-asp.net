@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SourceData</title>
+	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>
+	<style type="text/css">
+		*{
+			margin:0;padding:0;
+		}
+		img{
+			margin-right:10px;
+		}
+		div{
+			width:1200px;
+			margin:0 auto;
+		}
+		.message{
+			position:absolute;
+			background-color: yellow;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	<div id="message" class="message">
+		<p id="movie"></p>
+		<p id="actor"></p>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var data={pic1:["飞行员","张三","飞行员.jpg"],pic2:["钢铁侠3","李四","钢铁侠3.jpg"],pic3:["魔幻城堡","王五","魔幻城堡.jpg"],pic4:["叶问","麻六","叶问.jpg"],pic5:["指环王1","韩七","指环王1.jpg"]};
+
+			
+
+			$.each(data,function(key,value){
+				var imgTemp=$("<img />");
+
+				imgTemp.attr('src', 'images/'+value[2]);
+				imgTemp.attr('actor', value[1]);
+				imgTemp.attr('movie', value[0]);
+
+				$("#wrap").append(imgTemp);
+
+				imgTemp.mousemove(function(e){
+					$("#movie").text($(this).attr("movie"));
+					$("#actor").text($(this).attr("actor"));
+
+					$("#message").css({"top":e.pageY,"left":e.pageX});
+				
+
+
+				});
+
+
+
+				
+			});
+
+
+			
+			
+		});
+	</script>
+</body>
+</html>
